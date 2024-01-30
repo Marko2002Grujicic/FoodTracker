@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% block content%}
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <h3 style="width: fit-content">Today</h3>
+    <button style="width: fit-content" class="btn btn-primary">Edit</button>
+  </div>
+  <div class="row justify-content-center my-5">
+    <div class="card text-bg-light mb-3" style="max-width: 700px">
+      <div class="card-body">
+        <h5 class="card-title fs-2 my-2">Calories</h5>
+        <p class="card-text opacity-75 fs-5">Remaining = Goal - (Food + Exercise)</p>
+        <p class="card-text fs-5">Remaining 600 calories</p>
+
+        <div class="row">
+          <div class="col-sm-12 col-lg-7 remainingContainer">
+            <canvas id="pieChart" width="300" height="300"></canvas> 
+          </div>
+          <div class="col-sm-12 col-lg-5 d-flex flex-column justify-content-center mt-3">
+            <div class="row justify-content-center">
+              <div class="col d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-flag fs-1 text-secondary"></i>
+              </div>
+              <div class="col">
+                <span class="">Base Goal</span> <br />
+                <span class="fw-semibold fs-5">
+                  1400
+                </span>
+                </span>
+              </div>
+            </div>
+            <div class="row justify-content-center mt-1">
+              <div class="col d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-utensils fs-1 text-primary"></i>
+              </div>
+              <div class="col">
+                <span class="">Food</span> <br />
+                <span class="fw-semibold fs-5">
+                  600
+                </span>
+                </span>
+              </div>
+            </div>
+            <div class="row justify-content-center mt-1">
+              <div class="col d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-fire fs-1 text-danger"></i>
+              </div>
+              <div class="col">
+                <span class="">Exercise</span> <br />
+                <span class="fw-semibold fs-5">
+                  65
+                </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Remaining', 'Food', 'Exercise'],
+        datasets: [{
+          label: 'Calories Breakdown',
+          data: [800, 600, -65],
+          backgroundColor: [
+            '#6c757d',
+            '#0d6efd',
+            '#dc3545',
+           
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  });
+</script>
+
+{% endblock %}

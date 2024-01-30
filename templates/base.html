@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/bootstrap-5.3.2-dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fontawesome-free-6.5.1-web/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="/static/image/browserIcon.png" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <title>FoodTracker</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark px-5">
+      <div class="container-fluid">
+        <a class="navbar-brand">FoodTracker</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{{url_for('render_home')}}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/diary">Diary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/plans" aria-disabled="true"
+                >Plans</a
+              >
+            </li>
+          </ul>
+          <div class="row">
+            <div class="pe-3 col">
+              <a href="{{url_for('render_edit')}}" role="button">
+                <i class="fa-solid fa-user-pen text-white"></i>
+              </a>
+            </div>
+            <div class="col pe-3">
+              <a role="button">
+                <i class="fa-solid fa-right-from-bracket text-white"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+    <script src="/static/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
+    <script src="/static/fontawesome-free-6.5.1-web/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>

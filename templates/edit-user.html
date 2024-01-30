@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content%} 
+<div class="container font">
+    <form method="post" action="{{ url_for('render_edit')}}">
+      <div class="col-sm-12 col-lg-8 mx-auto">
+        <div class="row">
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Name: </label>
+            <input type="text" class="form-control input-height" value="{{account.name}}" name="name" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Calories (kcal): </label>
+            <input type="number" class="form-control input-height" id="calories" value="{{account.calories}}" name="calories" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Weight (kg): </label>
+            <input type="number" class="form-control input-height" id="weight" value="{{account.weight}}" name="weight" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Height (cm): </label>
+            <input type="number" class="form-control input-height" id="height" value="{{account.height}}" name="height" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start  col-sm-6">
+            <label for="gender"> Gender: </label>
+            <select class="form-select input-height" id="gender" name="gender">
+              <option value="male" {% if account.gender == 'male' %} selected {% endif %}>Male</option>
+              <option value="female" {% if account.gender == 'female' %} selected {% endif %}>Female</option>
+            </select>
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label for="activity"> Activity Level: </label>
+            <select class="form-select input-height" id="activity" name="activity">
+              <option value="" {% if account.activity == "" %} selected {% endif %} disabled>Choose your Activity level</option>
+              <option value="not-very-active" {% if account.activity == 'not-very-active' %} selected {% endif %}>Not very Active</option>
+              <option value="lightly-active" {% if account.activity == 'lightly-active' %} selected {% endif %}>Lightly Active</option>
+              <option value="active" {% if account.activity == 'active' %} selected {% endif %}>Active</option>
+              <option value="very-active" {% if account.activity == 'very-active' %} selected {% endif %}>Very Active </option>
+            </select>
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Email: </label>
+            <input type="email" class="form-control input-height" id="email" name="email" value="{{account.email}}" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Password: </label>
+            <input type="password" class="form-control input-height" id="password" name="password" value="********" />
+          </div>
+          <div class="form-group mt-4 px-4 text-start col-sm-6">
+            <label> Role: </label>
+            <select class="form-select input-height" id="role" name="role">
+              <option value="" {% if account.role == "" %} selected {% endif %} disabled>Choose your Role</option>
+              <option value="free" {% if account.role == 'free' %} selected {% endif %}>Free</option>
+              <option value="premium" {% if account.role == 'premium' %} selected {% endif %}>Premium</option>
+              <option value="trainer" {% if account.role == 'trainer' %} selected {% endif %}>Trainer</option>
+            </select>
+          </div>
+        </div>
+        <div class="ms-1" style="position: relative;">
+            <button class="btn btn-primary mt-4 ms-2" type="submit">Save Changes</button>
+        </div>
+    </div>
+  </form>
+  <form method="delete" action="{{ url_for('render_edit')}}">
+    <button class="btn btn-danger mt-4 ms-2" type="submit"">Delete Account</button>
+  </form>
+</div> 
+{% endblock %}
